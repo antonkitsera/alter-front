@@ -33,7 +33,7 @@
     },
     { 
         "id": 3,
-        "photo": "../src/images/team/team-2.png",
+        "photo": "../src/images/team/team-3.png",
         "name": "3irst and Last Names",
         "position": "Co-founder",
         "description": "2orem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis",
@@ -49,7 +49,7 @@
     },
     { 
         "id": 4,
-        "photo": "../src/images/team/team-2.png",
+        "photo": "../src/images/team/team-4.png",
         "name": "4irst and Last Names",
         "position": "Co-founder",
         "description": "4orem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis",
@@ -65,7 +65,7 @@
     },
     { 
         "id": 5,
-        "photo": "../src/images/team/team-2.png",
+        "photo": "../src/images/team/team-5.png",
         "name": "5irst and Last Names",
         "position": "Co-founder",
         "description": "2orem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis",

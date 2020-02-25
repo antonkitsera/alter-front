@@ -32,6 +32,19 @@ module.exports = {
         path: './data/'
       }
     },
+    {
+      resolve: "gatsby-source-strapi",
+      options: {
+        apiURL: process.env.API_URL || "http://localhost:1337",
+        contentTypes: [
+          "ua-articles",
+          "ua-categories",
+          "en-articles",
+          "en-categories"
+        ],
+        queryLimit: 1000,
+      },
+    },
     `gatsby-transformer-json`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

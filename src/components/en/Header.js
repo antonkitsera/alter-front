@@ -91,7 +91,7 @@ const Header = () => {
         </li>
         
         <li className="header-list__item">
-          <Link className="header-list__link" to="/">Blog</Link>
+          <Link className="header-list__link" to="/en/blog">Blog</Link>
         </li>
       </ul>
 

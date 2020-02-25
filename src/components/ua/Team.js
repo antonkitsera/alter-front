@@ -85,7 +85,7 @@ const Team = () => {
             {teamData.map(({ node }) => node.id === slideIndexArr[slideIndex - 1] ?
               <div className="team-person__item" key={node.id}>
                 <div className="team-person__photo">
-                  <img className="team-person__source" src={node.photo.publicURL} alt="Team Member" draggable="false"/>
+                  
                 </div>
                 
                 <div className="team-person__info">
