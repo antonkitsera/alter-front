@@ -35,7 +35,7 @@ module.exports = {
     {
       resolve: "gatsby-source-strapi",
       options: {
-        apiURL: process.env.API_URL,
+        apiURL: "https://alterweb.herokuapp.com",
         contentTypes: [
           "ua-articles",
           "ua-categories",
