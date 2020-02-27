@@ -17,7 +17,11 @@ export const query = graphql`
                     Text
                     Date(formatString: "DD.MM.YYYY")
                     Image {
-                        publicURL
+                        childImageSharp {
+                            fluid {
+                                base64
+                            }
+                        }
                     }
                 }
             }
@@ -61,7 +65,7 @@ const BlogCategoryUa = ({ data }) => {
                 {articles.map(({node}) =>
                     <div className="blog-news__item" key={node.id}>
                         <div className="blog-news__image">
-                            <img className="blog-news__source" src={node.Image.publicURL} alt=""/>
+                            <img className="blog-news__source" src={node.Image.childImageSharp.fluid.base64} alt=""/>
                         </div>
 
                         <div className="blog-news__content">
@@ -101,7 +105,7 @@ const BlogCategoryUa = ({ data }) => {
                 {articles.map(({node}) => 
                 <div className="blog-main__item" key={node.id}>
                     <div className="blog-main__image">
-                        <img className="blog-main__source" src={node.Image.publicURL} alt=""/>
+                        <img className="blog-main__source" src={node.Image.childImageSharp.fluid.base64} alt=""/>
                     </div>
 
                     <h6 className="blog-main__subtitle">{node.Name}</h6>

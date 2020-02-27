@@ -1,8 +1,8 @@
-$total: 500; // total particles
+$total: 500;
 $orb-size: 100px;
 $particle-size: 2px;
 $time: 14s; 
-$base-hue: 0; // change for diff colors (180 is nice)
+$base-hue: 0;
 
 html, body, #__gatsby, #gatsby-focus-wrapper {
   height: 100%;
@@ -20,7 +20,7 @@ body {
   height: 0; 
   transform-style: preserve-3d;
   perspective: 1000px;
-  animation: rotate $time infinite linear; // rotate orb
+  animation: rotate $time infinite linear;
 }
 
 @keyframes rotate {
@@ -38,11 +38,11 @@ body {
 }
 
 @for $i from 1 through $total {
-  $z: (random(360) * 1deg); // random angle to rotateZ
-  $y: (random(360) * 1deg); // random to rotateX
-  $hue: ((40/$total * $i) + $base-hue); // set hue
+  $z: (random(360) * 1deg);
+  $y: (random(360) * 1deg);
+  $hue: ((40/$total * $i) + $base-hue);
   
-  .c:nth-child(#{$i}){ // grab the nth particle
+  .c:nth-child(#{$i}){
     animation: orbit#{$i} $time infinite;
     animation-delay: ($i * .01s); 
     background-color: hsla($hue, 100%, 100%, 1);
@@ -50,17 +50,17 @@ body {
 
   @keyframes orbit#{$i}{ 
     20% {
-      opacity: 1; // fade in
+      opacity: 1;
     }
     30% {
-      transform: rotateZ(-$z) rotateY($y) translateX($orb-size) rotateZ($z); // form orb
+      transform: rotateZ(-$z) rotateY($y) translateX($orb-size) rotateZ($z);
     }
     80% {
-      transform: rotateZ(-$z) rotateY($y) translateX($orb-size) rotateZ($z); // hold orb state 30-80
-      opacity: 1; // hold opacity 20-80
+      transform: rotateZ(-$z) rotateY($y) translateX($orb-size) rotateZ($z);
+      opacity: 1;
     }
     100% {
-       transform: rotateZ(-$z) rotateY($y) translateX( ($orb-size * 3) ) rotateZ($z); // translateX * 3
+       transform: rotateZ(-$z) rotateY($y) translateX( ($orb-size * 3) ) rotateZ($z);
     }
   }
 }
