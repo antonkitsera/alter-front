@@ -11,11 +11,7 @@ export const query = graphql`
 query ArticleEnQuery($id: Int!) {
 	strapiEnArticles(strapiId: { eq: $id }) {
         Image {
-            childImageSharp {
-                fluid {
-                    base64
-                }
-            }
+          publicURL
         }
         strapiId
 		Name
@@ -34,7 +30,7 @@ const blogArticleEn = ({data}) => {
 
             <section className="blog-article">
                 <div className="blog-article__image">
-                    <img className="blog-article__source" src={article.Image.childImageSharp.fluid.base64} alt=""/>
+                    <img className="blog-article__source" src={article.Image.publicURL} alt=""/>
                 </div>
 
                 <h3 className="blog-article__title">{article.Name}</h3>
