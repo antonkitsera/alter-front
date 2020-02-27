@@ -1,43 +1,46 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 
-import Layout from "../components/ua/layout"
+import Layout from "../components/en/layout"
 import SEO from "../components/seo"
 
 import "../styles/blog.scss"
 
 export const query = graphql`
-query UaBlog {
-	allStrapiUaArticles {
-		edges {
-			node {
-				id
-				strapiId
-				Name
-				Text
-				Date(formatString: "DD.MM.YYYY")
-				Image {
-					publicURL
-				}
-			}
-		}
-    }
-    allStrapiUaCategories {
-        edges {
-            node {
-                strapiId
-                Name
+    query EnCategory($id: Int!) {
+        allStrapiEnArticles(filter: { en_category: { id: { eq: $id } } }) {
+            edges {
+                node {
+                    id
+                    strapiId
+                    Name
+                    Text
+                    Date(formatString: "DD.MM.YYYY")
+                    Image {
+                        publicURL
+                    }
+                }
             }
         }
-    }    
-}
-`;
+        strapiEnCategories(strapiId: { eq: $id }) {
+            Name
+        }
+        allStrapiEnCategories {
+            edges {
+                node {
+                    Name
+                    strapiId
+                }
+            }
+        }
+    }
+`
 
-const BlogPage = ({ data }) => {
+const BlogCategoryEn = ({ data }) => {
     console.log(data)
 
-    const articles = data.allStrapiUaArticles.edges;
-    const categories = data.allStrapiUaCategories.edges;
+    const articles = data.allStrapiEnArticles.edges;
+    const categories = data.allStrapiEnCategories.edges;
   
   return (
   <Layout>
@@ -106,7 +109,7 @@ const BlogPage = ({ data }) => {
                     <p className="blog-main__text">{node.Text}</p>
 
                     <div className="blog-main__content">
-                        <p className="blog-main__date">23.04.2019</p>
+                        <p className="blog-main__date">{node.Name}</p>
 
                         <Link className="blog-main__link" to="/">MORE INFO</Link>
                     </div>
@@ -117,4 +120,4 @@ const BlogPage = ({ data }) => {
   </Layout>
 )};
 
-export default BlogPage
+export default BlogCategoryEn

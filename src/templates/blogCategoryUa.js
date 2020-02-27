@@ -7,33 +7,36 @@ import SEO from "../components/seo"
 import "../styles/blog.scss"
 
 export const query = graphql`
-query UaBlog {
-	allStrapiUaArticles {
-		edges {
-			node {
-				id
-				strapiId
-				Name
-				Text
-				Date(formatString: "DD.MM.YYYY")
-				Image {
-					publicURL
-				}
-			}
-		}
-    }
-    allStrapiUaCategories {
-        edges {
-            node {
-                strapiId
-                Name
+    query UaCategory($id: Int!) {
+        allStrapiUaArticles(filter: { ua_category: { id: { eq: $id } } }) {
+            edges {
+                node {
+                    id
+                    strapiId
+                    Name
+                    Text
+                    Date(formatString: "DD.MM.YYYY")
+                    Image {
+                        publicURL
+                    }
+                }
             }
         }
-    }    
-}
-`;
+        strapiUaCategories(strapiId: { eq: $id }) {
+            Name
+        }
+        allStrapiUaCategories {
+            edges {
+                node {
+                    Name
+                    strapiId
+                }
+            }
+        }
+    }
+`
 
-const BlogPage = ({ data }) => {
+const BlogCategoryUa = ({ data }) => {
     console.log(data)
 
     const articles = data.allStrapiUaArticles.edges;
@@ -117,4 +120,4 @@ const BlogPage = ({ data }) => {
   </Layout>
 )};
 
-export default BlogPage
+export default BlogCategoryUa
