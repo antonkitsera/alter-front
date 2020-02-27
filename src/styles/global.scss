@@ -14,16 +14,12 @@ select:-webkit-autofill:focus {
 }
 
 textarea,
-input.text,
 input[type="text"],
 input[type="button"],
 input[type="email"],
 input[type="tel"],
-input[type="submit"],
-.input-checkbox {
+input[type="submit"] {
     border-radius: 0;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     appearance: none;
 }
 
@@ -46,14 +42,9 @@ body, .header__wrapper {
         scrollbar-width: thin;
         scrollbar-color: $color-blue;
     }
-    
-    &::-webkit-scrollbar-track {
-        //background: var(--scrollbarBG);
-    }
 
     &::-webkit-scrollbar-thumb {
         background-color: $color-blue;
-        //border: 3px solid var(--scrollbarBG);
     }
 }
 
@@ -202,6 +193,29 @@ body, .header__wrapper {
     z-index: 100;
     background-color: rgba($color: $color-white, $alpha: 0.95);
     transition: $transition;
+
+    &OnBlue {
+        .header-media-request {
+            background-color: transparent;
+
+            &:hover {
+                color: $color-white;
+                opacity: 0.5;
+            }
+        }
+
+        .header-media-request:hover .header-media-request__svg {
+            fill: $color-white;
+            opacity: 0.5;
+        }
+
+        .header-media__svg {
+            &:hover {
+                fill: $color-white;
+                opacity: 0.5;
+            }
+        }
+    }
 
     &-sticky {
         background-color: transparent;

@@ -13,7 +13,7 @@ const Header = () => {
 
   console.log(location)
 
-  const headerClass = `${location.pathname.match(/^\/$/g) ? "" : " header-sticky"}`;
+  const headerClass = `${location.pathname.match(/\/en\/$/g) ? "" : " header-sticky"}`;
 
   const [shouldShowScrolled, setShouldShowScrolled] = useState(false);
   const [handleMobile, changeHandleMobile] = useState(false);
@@ -59,7 +59,7 @@ const Header = () => {
   const headerClassScrolled = shouldShowScrolled ? '_scrolled' : '';
 
   return (
-  <header className={`header${!isMediaSmall ? headerClass : ""}${headerClass && !isMediaSmall ? headerClassScrolled : ""}${handleNav ? " open" : ""}`}>
+  <header className={`header${!isMediaSmall ? headerClass : ""}${headerClass && !isMediaSmall ? headerClassScrolled : ""}${handleNav ? " open" : ""}${!isMediaSmall && !headerClassScrolled ? " headerOnBlue" : ""}`}>
 
     { isMediaSmall ?
 

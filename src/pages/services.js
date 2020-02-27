@@ -63,7 +63,7 @@ const ServicesPage = ({ data }) => {
     </section>
 
     <section className="services">
-      { isMediaSmall ? <Collapsible trigger="Our services" open="true">
+      <Collapsible trigger="Our services" open="true">
         <div className="services__wrapper container">
             {servicesData.map(({ node }) => 
               <div className="services_grid" data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease">
@@ -76,21 +76,7 @@ const ServicesPage = ({ data }) => {
               </div>
             )}
         </div>
-      </Collapsible> : 
-
-        <div className="services__wrapper container">
-          {servicesData.map(({ node }) => 
-            <div className="services_grid" data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease">
-              <Link to={`/services/${node.slug}/`} className="services-item" key={node.id}>
-                  <div className="services-item__icon">
-                      <img className="services-item__source" src={node.icon} alt="Logo" />
-                  </div>
-                  <h6 className="services-item__title">{node.title}</h6>
-              </Link>
-            </div>
-          )}
-        </div>
-      }
+      </Collapsible>
     </section>
 
     <section className="message container">

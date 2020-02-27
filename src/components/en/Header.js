@@ -59,7 +59,7 @@ const Header = () => {
   const headerClassScrolled = shouldShowScrolled ? '_scrolled' : '';
 
   return (
-  <header className={`header${!isMediaSmall ? headerClass : ""}${headerClass && !isMediaSmall ? headerClassScrolled : ""}${handleNav ? " open" : ""}`}>
+  <header className={`header${!isMediaSmall ? headerClass : ""}${headerClass && !isMediaSmall ? headerClassScrolled : ""}${handleNav ? " open" : ""}${!isMediaSmall && !headerClassScrolled ? " headerOnBlue" : ""}`}>
 
     { isMediaSmall ?
 

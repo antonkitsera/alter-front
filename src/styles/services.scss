@@ -164,10 +164,13 @@
     }
 }
 
+@media (min-width: 1140px) {
+    .Collapsible__trigger {
+        display: none;
+    }
+}
+
 @media (max-width: 1140px) {
-
-
-
     .services {
         background-color: transparent;
         padding-top: 20px;

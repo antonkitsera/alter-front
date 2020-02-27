@@ -38,6 +38,60 @@ const BlogPage = ({ data }) => {
 
     const articles = data.allStrapiUaArticles.edges;
     const categories = data.allStrapiUaCategories.edges;
+
+    const CyrTranslit = str => {
+    
+        let cyr = {
+            'а': 'a',
+            'б': 'b',
+            'в': 'v',
+            'г': 'g',
+            'ґ': 'g',
+            'д': 'd', 
+            'е': 'e',
+            'ё': 'e',
+            'є': 'ye',
+            'ж': 'j', 
+            'з': 'z', 
+            'и': 'y',
+            'і': 'i',
+            'ї': 'yi',
+            'й': 'i',
+            'к': 'k', 
+            'л': 'l', 
+            'м': 'm', 
+            'н': 'n', 
+            'о': 'o', 
+            'п': 'p', 
+            'р': 'r', 
+            'с': 's', 
+            'т': 't', 
+            'у': 'u', 
+            'ф': 'f', 
+            'х': 'h', 
+            'ц': 'c', 
+            'ч': 'ch', 
+            'ш': 'sh', 
+            'щ': 'shch', 
+            'ы': 'y', 
+            'э': 'e', 
+            'ю': 'u', 
+            'я': 'ya',
+            'ь': '',
+            'ъ': ''
+        }, n_str = [];
+        
+        for (let i = 0; i < str.length; ++i) {
+          n_str.push(
+              cyr[str[i]]
+              || (cyr[str[i].toLowerCase()] === undefined && str[i])
+              || cyr[str[i].toLowerCase()].replace(/^(.)/, 
+              function (match) { return match.toUpperCase() })
+          );
+        }
+        
+        return n_str.join('').toLowerCase().split(" ").join("-");
+      }
   
   return (
   <Layout>
@@ -67,7 +121,7 @@ const BlogPage = ({ data }) => {
                         </div>
         
                         <div className="blog-news__block">
-                            <Link className="blog-news__link" to="/">MORE INFO</Link>
+                            <Link className="blog-news__link" to={`/blog/article/${CyrTranslit(node.Name)}`}>MORE INFO</Link>
                         </div>
                     </div>
                 )}
@@ -83,7 +137,7 @@ const BlogPage = ({ data }) => {
                 <ul className="blog-main-list">
                     {categories.map(({node}) =>
                         <li className="blog-main-list__item" key={node.strapiId}>
-                            <Link className="blog-main-list__link">
+                            <Link to={`/blog/category/${CyrTranslit(node.Name)}`} className="blog-main-list__link">
                             {node.Name}
                             <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M0.584976 11.46L5.16998 6.875L0.584976 2.29L1.99998 0.875L7.99998 6.875L1.99998 12.875L0.584976 11.46Z" fill="#2726e8"/>
@@ -106,9 +160,9 @@ const BlogPage = ({ data }) => {
                     <p className="blog-main__text">{node.Text}</p>
 
                     <div className="blog-main__content">
-                        <p className="blog-main__date">23.04.2019</p>
+                        <p className="blog-main__date">{node.Date}</p>
 
-                        <Link className="blog-main__link" to="/">MORE INFO</Link>
+                        <Link to={`/blog/article/${CyrTranslit(node.Name)}`} className="blog-main__link">MORE INFO</Link>
                     </div>
                 </div>)}
             </div>
