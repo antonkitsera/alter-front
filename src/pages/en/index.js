@@ -53,9 +53,7 @@ const IndexPage = ({ data }) => {
             <Link className="banner__link" to="">Request for consultation</Link>
           </div>
 
-          {
-            //<BannerCircle />
-          }
+          <BannerCircle />
         </div>
     </section>
 
