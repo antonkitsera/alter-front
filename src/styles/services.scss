@@ -192,7 +192,17 @@
             color: $color-blue;
             position: relative;
 
-            
+            &::after {
+                content: "";
+                display: block;
+                background-repeat: no-repeat;
+                width: 12px;
+                height: 6px;         
+                position: absolute;
+                right: 5px;
+                top: 48%; 
+                transition: $transition;
+            }
 
             &.is-closed {
                 &::after { 
