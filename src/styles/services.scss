@@ -213,26 +213,7 @@
         }
     }
 
-    .message {
-        padding-top: 20px;
-        padding-bottom: 36px;
-
-        &-aside {
-            &__logo {
-                max-width: 300px;
-            }
-
-            &__photo {
-                height: 386px;
-                margin-top: 29px;
-            }
-
-            &__source {
-                object-fit: cover;
-                height: 100%;
-            }
-        }
-    }
+    
 }
 
 @media (max-width: 370px) {
