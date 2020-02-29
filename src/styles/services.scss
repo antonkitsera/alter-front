@@ -163,3 +163,20 @@
         }
     }
 }
+
+@media (min-width: 1140px) {
+    .Collapsible__trigger {
+        display: none;
+    }
+}
+
+
+@media (max-width: 370px) {
+    .message {
+        &-aside {
+            &__logo {
+                max-width: 260px;
+            }
+        }
+    }
+}
