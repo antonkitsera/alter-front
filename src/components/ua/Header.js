@@ -123,7 +123,12 @@ const Header = () => {
         </a>
         
 
-        <Link to={`${/\/services\/.+/.test(location.pathname) ? location.pathname.replace(/-ua\/$/, "/").replace(/^/, "en/") : location.pathname.replace(/^/, "en/")}`} className="header-media__lang">EN</Link>
+        <Link to={`${
+          /\/services\/.+/.test(location.pathname) 
+          ? location.pathname.replace(/-ua\/$/, "/").replace(/^/, "en/") 
+          : /\/blog/.test(location.pathname) 
+          ? location.pathname.replace(/.+/, "/en/blog") 
+          : location.pathname.replace(/^/, "en/")}`} className="header-media__lang">EN</Link>
       </div>}
 
       {isMediaSmall ? <Contacts /> : "" }

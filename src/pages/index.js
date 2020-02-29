@@ -19,6 +19,9 @@ import partnerFirst from "../images/partner-1.png"
 import partnerSecond from "../images/partner-2.png"
 import NewsImage from "../images/news-1.png"
 
+import CircleVideo from "../assets/circle.mp4"
+import CircleVideoSmall from "../assets/circle-sm.mp4"
+
 export const query = graphql`
   query CasesShowQueryUa {
     allCasesDataJson(limit: 6) {
@@ -31,11 +34,99 @@ export const query = graphql`
         }
       }
     }
+    allStrapiUaArticles(limit: 3) {
+      edges {
+        node {
+          id
+          strapiId
+          Name
+          Text
+          Date(formatString: "DD.MM.YYYY")
+          Image {
+            publicURL
+          }
+        }
+      }
+    }
   }
 `;
 
 const IndexPage = ({ data }) => {
   const casesData = data.allCasesDataJson.edges;
+  const articles = data.allStrapiUaArticles.edges;
+
+  const CyrTranslit = str => {
+    
+    let cyr = {
+        'а': 'a',
+        'б': 'b',
+        'в': 'v',
+        'г': 'g',
+        'ґ': 'g',
+        'д': 'd', 
+        'е': 'e',
+        'ё': 'e',
+        'є': 'ye',
+        'ж': 'j', 
+        'з': 'z', 
+        'и': 'y',
+        'і': 'i',
+        'ї': 'yi',
+        'й': 'i',
+        'к': 'k', 
+        'л': 'l', 
+        'м': 'm', 
+        'н': 'n', 
+        'о': 'o', 
+        'п': 'p', 
+        'р': 'r', 
+        'с': 's', 
+        'т': 't', 
+        'у': 'u', 
+        'ф': 'f', 
+        'х': 'h', 
+        'ц': 'c', 
+        'ч': 'ch', 
+        'ш': 'sh', 
+        'щ': 'shch', 
+        'ы': 'y', 
+        'э': 'e', 
+        'ю': 'u', 
+        'я': 'ya',
+        'ь': '',
+        'ъ': ''
+    }, n_str = [];
+    
+    for (let i = 0; i < str.length; ++i) {
+      n_str.push(
+          cyr[str[i]]
+          || (cyr[str[i].toLowerCase()] === undefined && str[i])
+          || cyr[str[i].toLowerCase()].replace(/^(.)/, 
+          function (match) { return match.toUpperCase() })
+      );
+    }
+    
+    return n_str.join('').toLowerCase().split(" ").join("-");
+  }
+
+  const useMediaQuery = (query) => {
+    let mediaMatch = undefined;
+    const [matches, setMatches] = useState(false);
+  
+    useEffect(() => {  
+      if (typeof window !== `undefined`) {
+        mediaMatch = window.matchMedia(query);
+        setMatches(mediaMatch.matches)
+      }
+
+      const handler = e => setMatches(e.matches);
+      mediaMatch.addListener(handler);
+      return () => mediaMatch.removeListener(handler);
+    });
+    return matches;
+  };
+
+  const isMediaSmall = useMediaQuery('(max-width: 1140px)');
 
   return(
     <Layout>
@@ -43,6 +134,10 @@ const IndexPage = ({ data }) => {
   
       <section id="banner" className="banner">
   
+          <video className="banner__video" autoPlay loop muted>
+              <source src={isMediaSmall ? CircleVideoSmall : CircleVideo} type='video/mp4' />
+          </video>
+
           <div className="banner__content container">
             <img data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease" className="banner__logo" src={Logo} alt="Logo" />
   
@@ -55,7 +150,7 @@ const IndexPage = ({ data }) => {
             </div>
   
           
-            <BannerCircle />
+            {/*<BannerCircle />*/}
           </div>
       </section>
   
@@ -106,68 +201,26 @@ const IndexPage = ({ data }) => {
         <div className="news__wrapper container">
           <h4 data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease" className="g-subtitle">NEWS</h4>
   
-          <div className="news-catalog">
-            <div className="news-catalog__item"  data-sal="slide-right" data-sal-duration="1000" data-sal-delay="450" data-sal-easing="ease">
+          <div className="news-catalog sal-animate"  data-sal="slide-right" data-sal-duration="1000" data-sal-delay="450" data-sal-easing="ease">
+            {articles.map(({node}) => <div key={node.id} className="news-catalog__item">
               <div className="news-catalog__image">
-                <img className="news-catalog__source" src={NewsImage} alt=""/>
+                <img className="news-catalog__source" src={node.Image.publicURL} alt=""/>
               </div>
   
               <div className="news-catalog__content">
-                <h6 className="news-catalog__title">NEWS TITLE</h6>
+                <h6 className="news-catalog__title">{node.Name}</h6>
   
-                <p className="news-catalog__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum dui faucibus.</p>
+                <p className="news-catalog__text">{node.Text}</p>
   
                 <div className="news-catalog-info">
-                  <p className="news-catalog-info__author">Ivan Andreev, Andreev & co.</p>
-  
-                  <p className="news-catalog-info__date">23.04.2019</p>
+                  <p className="news-catalog-info__date">{node.Date}</p>
                 </div>
   
                 <div className="news-catalog__block">
-                  <Link className="news-catalog__link" to="/">MORE INFO</Link>
+                  <Link className="news-catalog__link" to={`/blog/article/${CyrTranslit(node.Name)}`}>ЧИТАТИ</Link>
                 </div>
               </div>
-            </div>
-  
-            <div className="news-catalog__item"  data-sal="slide-right" data-sal-duration="1000" data-sal-delay="400" data-sal-easing="ease">
-              <div className="news-catalog__image">
-                <img className="news-catalog__source" src={NewsImage} alt=""/>
-              </div>
-  
-              <div className="news-catalog__content">
-                <h6 className="news-catalog__title">NEWS TITLE</h6>
-  
-                <div className="news-catalog-info">
-                  <p className="news-catalog-info__author">Ivan Andreev, Andreev & co.</p>
-  
-                  <p className="news-catalog-info__date">23.04.2019</p>
-                </div>
-  
-                <div className="news-catalog__block">
-                  <Link className="news-catalog__link" to="/">MORE INFO</Link>
-                </div>
-              </div>
-            </div>
-  
-            <div className="news-catalog__item"  data-sal="slide-right" data-sal-duration="1000" data-sal-delay="450" data-sal-easing="ease">
-              <div className="news-catalog__image">
-                <img className="news-catalog__source" src={NewsImage} alt=""/>
-              </div>
-  
-              <div className="news-catalog__content">
-                <h6 className="news-catalog__title">NEWS TITLE</h6>
-  
-                <div className="news-catalog-info">
-                  <p className="news-catalog-info__author">Ivan Andreev, Andreev & co.</p>
-  
-                  <p className="news-catalog-info__date">23.04.2019</p>
-                </div>
-  
-                <div className="news-catalog__block">
-                  <Link className="news-catalog__link" to="/">MORE INFO</Link>
-                </div>
-              </div>
-            </div>
+            </div>)}
           </div>
   
           <div className="news-more">

@@ -16,7 +16,6 @@ import Map from "../../components/en/Map"
 import Logo from "../../assets/logo-alter.svg"
 import partnerFirst from "../../images/partner-1.png"
 import partnerSecond from "../../images/partner-2.png"
-import NewsImage from "../../images/news-1.png"
 
 export const query = graphql`
   query CasesShowQueryEn {
@@ -30,11 +29,26 @@ export const query = graphql`
         }
       }
     }
+    allStrapiEnArticles(limit: 3) {
+      edges {
+        node {
+          id
+          strapiId
+          Name
+          Text
+          Date(formatString: "DD.MM.YYYY")
+          Image {
+            publicURL
+          }
+        }
+      }
+    }
   }
 `;
 
 const IndexPage = ({ data }) => {
   const casesData = data.allCasesDataJson.edges;
+  const articles = data.allStrapiEnArticles.edges;
 
   return(
   <Layout>
@@ -104,69 +118,27 @@ const IndexPage = ({ data }) => {
       <div className="news__wrapper container">
         <h4 data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease" className="g-subtitle">NEWS</h4>
 
-        <div className="news-catalog">
-          <div className="news-catalog__item"  data-sal="slide-right" data-sal-duration="1000" data-sal-delay="450" data-sal-easing="ease">
-            <div className="news-catalog__image">
-              <img className="news-catalog__source" src={NewsImage} alt=""/>
-            </div>
-
-            <div className="news-catalog__content">
-              <h6 className="news-catalog__title">NEWS TITLE</h6>
-
-              <p className="news-catalog__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum dui faucibus.</p>
-
-              <div className="news-catalog-info">
-                <p className="news-catalog-info__author">Ivan Andreev, Andreev & co.</p>
-
-                <p className="news-catalog-info__date">23.04.2019</p>
+        <div className="news-catalog sal-animate"  data-sal="slide-right" data-sal-duration="1000" data-sal-delay="450" data-sal-easing="ease">
+            {articles.map(({node}) => <div key={node.id} className="news-catalog__item">
+              <div className="news-catalog__image">
+                <img className="news-catalog__source" src={node.Image.publicURL} alt=""/>
               </div>
-
-              <div className="news-catalog__block">
-                <Link className="news-catalog__link" to="/">MORE INFO</Link>
+  
+              <div className="news-catalog__content">
+                <h6 className="news-catalog__title">{node.Name}</h6>
+  
+                <p className="news-catalog__text">{node.Text}</p>
+  
+                <div className="news-catalog-info">
+                  <p className="news-catalog-info__date">{node.Date}</p>
+                </div>
+  
+                <div className="news-catalog__block">
+                  <Link className="news-catalog__link" to={`/en/blog/article/${node.Name.toLowerCase().split(" ").join("-")}`}>MORE INFO</Link>
+                </div>
               </div>
-            </div>
+            </div>)}
           </div>
-
-          <div className="news-catalog__item"  data-sal="slide-right" data-sal-duration="1000" data-sal-delay="400" data-sal-easing="ease">
-            <div className="news-catalog__image">
-              <img className="news-catalog__source" src={NewsImage} alt=""/>
-            </div>
-
-            <div className="news-catalog__content">
-              <h6 className="news-catalog__title">NEWS TITLE</h6>
-
-              <div className="news-catalog-info">
-                <p className="news-catalog-info__author">Ivan Andreev, Andreev & co.</p>
-
-                <p className="news-catalog-info__date">23.04.2019</p>
-              </div>
-
-              <div className="news-catalog__block">
-                <Link className="news-catalog__link" to="/">MORE INFO</Link>
-              </div>
-            </div>
-          </div>
-
-          <div className="news-catalog__item"  data-sal="slide-right" data-sal-duration="1000" data-sal-delay="450" data-sal-easing="ease">
-            <div className="news-catalog__image">
-              <img className="news-catalog__source" src={NewsImage} alt=""/>
-            </div>
-
-            <div className="news-catalog__content">
-              <h6 className="news-catalog__title">NEWS TITLE</h6>
-
-              <div className="news-catalog-info">
-                <p className="news-catalog-info__author">Ivan Andreev, Andreev & co.</p>
-
-                <p className="news-catalog-info__date">23.04.2019</p>
-              </div>
-
-              <div className="news-catalog__block">
-                <Link className="news-catalog__link" to="/">MORE INFO</Link>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <div className="news-more">
           <div className="news-more__block" data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease">
@@ -187,7 +159,7 @@ const IndexPage = ({ data }) => {
           </div>
 
           <div data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease">
-            <Link className="g-more__button" to="/blog">
+            <Link className="g-more__button" to="/en/blog">
               <span className="g-more__span">Discover</span>
               <svg className="g-more__svg" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12.17 8.5H0.5V7.5H12.17H13.3756L12.5239 6.64676L7.29679 1.41032L8 0.707107L15.2929 8L8 15.2929L7.29679 14.5897L12.5239 9.35324L13.3756 8.5H12.17Z"/>
@@ -202,7 +174,7 @@ const IndexPage = ({ data }) => {
       <div className="philosophy__wrapper container">
         <h3  data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease"   className="philosophy__title">Our philosophy</h3>
         <p data-sal="slide-right" data-sal-duration="1000" data-sal-delay="350" data-sal-easing="ease"   className="philosophy__text">ALTER is a law firm that helps with solving various legal issues.</p> 
-        <p data-sal="slide-right" data-sal-duration="1000" data-sal-delay="400" data-sal-easing="ease"   className="philosophy__text">We provide legal and accounting services for businesses and individuals.</p>
+        <p data-sal="slide-right" data-sal-duration="1000" data-sal-delay="400" data-sal-easing="ease"   className="philosophy__text">We provide legal and accounting services for businesses and individEnls.</p>
         <p data-sal="slide-right" data-sal-duration="1000" data-sal-delay="450" data-sal-easing="ease"   className="philosophy__text">The ALTER team analyzes the questions of clients and partners altogether and, as a result, offers alternatives for solving issues.</p>
       </div>
     </section>
@@ -221,7 +193,7 @@ const IndexPage = ({ data }) => {
 
             <p className="partners-info__job"  data-sal="slide-right" data-sal-duration="1000" data-sal-delay="400" data-sal-easing="ease">Lawer at Masterize Law Solutions,  Tokyo, Japan</p>
 
-            <p className="partners-info__text"  data-sal="slide-right" data-sal-duration="1000" data-sal-delay="450" data-sal-easing="ease">Tristique consequat risus, quis urna, vel. Ultrices sit mattis sed tellus dis ut diam aliquam lacus. Auctor risus viverra risus sed vitae libero lectus commodo. Integer a nulla vitae risus vulputate lobortis. Viverra semper fringilla leo viverra sed dolor purus adipiscing ac. Nulla tortor, non at dolor quis nunc elit, enim, morbi.</p>
+            <p className="partners-info__text"  data-sal="slide-right" data-sal-duration="1000" data-sal-delay="450" data-sal-easing="ease">Tristique conseqEnt risus, quis urna, vel. Ultrices sit mattis sed tellus dis ut diam aliqEnm lacus. Auctor risus viverra risus sed vitae libero lectus commodo. Integer a nulla vitae risus vulputate lobortis. Viverra semper fringilla leo viverra sed dolor purus adipiscing ac. Nulla tortor, non at dolor quis nunc elit, enim, morbi.</p>
           </div>
         </div>
       </div>
@@ -238,7 +210,7 @@ const IndexPage = ({ data }) => {
             
               <p className="partners-info__job" data-sal="slide-right" data-sal-duration="1000" data-sal-delay="400" data-sal-easing="ease">Lawer at Janimo solutions,  Jerusalem, Israel</p>
             
-              <p className="partners-info__text" data-sal="slide-right" data-sal-duration="1000" data-sal-delay="450" data-sal-easing="ease">Tristique consequat risus, quis urna, vel. Ultrices sit mattis sed tellus dis ut diam aliquam lacus. Auctor risus viverra risus sed vitae libero lectus commodo. Integer a nulla vitae risus vulputate lobortis. Viverra semper fringilla leo viverra sed dolor purus adipiscing ac. Nulla tortor, non at dolor quis nunc elit, enim, morbi.</p>
+              <p className="partners-info__text" data-sal="slide-right" data-sal-duration="1000" data-sal-delay="450" data-sal-easing="ease">Tristique conseqEnt risus, quis urna, vel. Ultrices sit mattis sed tellus dis ut diam aliqEnm lacus. Auctor risus viverra risus sed vitae libero lectus commodo. Integer a nulla vitae risus vulputate lobortis. Viverra semper fringilla leo viverra sed dolor purus adipiscing ac. Nulla tortor, non at dolor quis nunc elit, enim, morbi.</p>
             </div>
           </div>
         </div>

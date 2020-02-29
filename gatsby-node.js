@@ -161,7 +161,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
 
   EnArticles.forEach(article => {
     createPage({
-      path: `/en/blog/article/${article.node.Name}`,
+      path: `/en/blog/article/${article.node.Name.toLowerCase().split(" ").join("-")}`,
       component: require.resolve("./src/templates/blogArticleEn.js"),
       context: {
         id: article.node.strapiId,
@@ -171,7 +171,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
 
   EnCategories.forEach(category => {
     createPage({
-      path: `/en/blog/category/${category.node.Name}`,
+      path: `/en/blog/category/${category.node.Name.toLowerCase().split(" ").join("-")}`,
       component: require.resolve("./src/templates/blogCategoryEn.js"),
       context: {
         id: category.node.strapiId,

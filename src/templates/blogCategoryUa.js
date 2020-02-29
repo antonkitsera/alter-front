@@ -102,17 +102,17 @@ const BlogCategoryUa = ({ data }) => {
     
     <section className="g-headline">
       <div className="container">
-        <h1 data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease" className="g-headline__title">BLOG</h1>
-        <p data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease" className="g-headline__text">News from law industry and special articles from Alter</p>
+        <h1 data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease" className="g-headline__title">БЛОГ</h1>
+        <p data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease" className="g-headline__text">Новини з юридичної галузі та спеціальні статті від Alter</p>
       </div>
     </section>
 
     <section className="blog-news">
         <div className="container">
-            <h3 className="blog-news__title">LATEST ARTICLES</h3>
+            <h3 className="blog-news__title">ОСТАННІ СТАТТІ</h3>
 
             <div className="blog-news__wrapper">
-                {articles.map(({node}) =>
+                {articles.map(({node}, index) => index < 3 ?
                     <div className="blog-news__item" key={node.id}>
                         <div className="blog-news__image">
                             <img className="blog-news__source" src={node.Image.publicURL} alt=""/>
@@ -124,9 +124,9 @@ const BlogCategoryUa = ({ data }) => {
                         </div>
         
                         <div className="blog-news__block">
-                            <Link to={`/blog/article/${CyrTranslit(node.Name)}`} className="blog-news__link">MORE INFO</Link>
+                            <Link to={`/blog/article/${CyrTranslit(node.Name)}`} className="blog-news__link">ЧИТАТИ</Link>
                         </div>
-                    </div>
+                    </div> : null
                 )}
             </div>
         </div>
@@ -135,7 +135,7 @@ const BlogCategoryUa = ({ data }) => {
     <section className="blog-main">
         <div className="blog-main__wrapper container">
             <div className="blog-main__block">
-                <h5 className="blog-main__title">Categories</h5>
+                <h5 className="blog-main__title">Категорії</h5>
 
                 <ul className="blog-main-list">
                     {categories.map(({node}) =>
@@ -165,7 +165,7 @@ const BlogCategoryUa = ({ data }) => {
                     <div className="blog-main__content">
                         <p className="blog-main__date">23.04.2019</p>
 
-                        <Link to={`/blog/article/${CyrTranslit(node.Name)}`} className="blog-main__link">MORE INFO</Link>
+                        <Link to={`/blog/article/${CyrTranslit(node.Name)}`} className="blog-main__link">ЧИТАТИ</Link>
                     </div>
                 </div>)}
             </div>

@@ -58,7 +58,7 @@ const BlogCategoryEn = ({ data }) => {
             <h3 className="blog-news__title">LATEST ARTICLES</h3>
 
             <div className="blog-news__wrapper">
-                {articles.map(({node}) =>
+                {articles.map(({node}, index) => index < 3 ?
                     <div className="blog-news__item" key={node.id}>
                         <div className="blog-news__image">
                             <img className="blog-news__source" src={node.Image.publicURL} alt=""/>
@@ -70,9 +70,9 @@ const BlogCategoryEn = ({ data }) => {
                         </div>
         
                         <div className="blog-news__block">
-                            <Link className="blog-news__link" to="/">MORE INFO</Link>
+                            <Link className="blog-news__link" to={`/en/blog/article/${node.Name.toLowerCase().split(" ").join("-")}`}>MORE INFO</Link>
                         </div>
-                    </div>
+                    </div> : null
                 )}
             </div>
         </div>
@@ -86,7 +86,7 @@ const BlogCategoryEn = ({ data }) => {
                 <ul className="blog-main-list">
                     {categories.map(({node}) =>
                         <li className="blog-main-list__item" key={node.strapiId}>
-                            <Link className="blog-main-list__link">
+                            <Link to={`/en/blog/category/${node.Name.toLowerCase().split(" ").join("-")}`} className="blog-main-list__link">
                             {node.Name}
                             <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M0.584976 11.46L5.16998 6.875L0.584976 2.29L1.99998 0.875L7.99998 6.875L1.99998 12.875L0.584976 11.46Z" fill="#2726e8"/>
@@ -111,7 +111,7 @@ const BlogCategoryEn = ({ data }) => {
                     <div className="blog-main__content">
                         <p className="blog-main__date">{node.Name}</p>
 
-                        <Link className="blog-main__link" to="/">MORE INFO</Link>
+                        <Link className="blog-main__link"  to={`/en/blog/article/${node.Name.toLowerCase().split(" ").join("-")}`}>MORE INFO</Link>
                     </div>
                 </div>)}
             </div>

@@ -29,15 +29,19 @@ const blogArticleEn = ({data}) => {
             <SEO title="Blog" />
 
             <section className="blog-article">
-                <div className="blog-article__image">
-                    <img className="blog-article__source" src={article.Image.publicURL} alt=""/>
+                <div className="blog-article__block">
+                    <div className="blog-article__image container">
+                        <img className="blog-article__source" src={article.Image.publicURL} alt=""/>
+                    </div>
                 </div>
 
-                <h3 className="blog-article__title">{article.Name}</h3>
+                <div className="blog-article__block container">
+                    <h3 className="blog-article__title">{article.Name}</h3>
 
-                <p className="blog-article__text">{article.Text}</p>
+                    <p className="blog-article__text">{article.Text}</p>
 
-                <p className="blog-article__date">{article.Date}</p>
+                    <p className="blog-article__date">{article.Date}</p>
+                </div>
             </section>
         </Layout>
     );

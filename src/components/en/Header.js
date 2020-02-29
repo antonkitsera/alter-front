@@ -124,7 +124,11 @@ const Header = () => {
         
 
         <Link to={`${
-          /\/services\/.+/.test(location.pathname) ? location.pathname.replace(/.$/, "-ua/").replace(/\/en\//, "/") : location.pathname.replace(/\/en\//, "/")
+          /\/services\/.+/.test(location.pathname) 
+          ? location.pathname.replace(/.$/, "-ua/").replace(/\/en\//, "/") 
+          : /\/blog/.test(location.pathname) 
+          ? location.pathname.replace(/.+/, "/blog") 
+          : location.pathname.replace(/\/en\//, "/")
         }`} className="header-media__lang">UA</Link>
       </div>}
 
