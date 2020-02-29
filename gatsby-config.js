@@ -8,7 +8,6 @@ module.exports = {
   plugins: [
     `gatsby-plugin-sass`,
     `gatsby-plugin-scroll-reveal`,
-    `gatsby-transformer-inline-svg`,
     {
       resolve: "gatsby-plugin-react-svg",
       options: {
