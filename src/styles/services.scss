@@ -178,7 +178,29 @@
         padding-right: 16px;
     }
 
-    
+    .Collapsible {
+        cursor: pointer;
+
+        &__trigger {
+            display: flex;
+            border-bottom: 1px solid rgba($color: $color-black, $alpha: 0.1);
+            padding-bottom: 5px;
+            font-family: $font-first;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 33px;
+            color: $color-blue;
+            position: relative;
+
+            
+
+            &.is-closed {
+                &::after { 
+                    transform: rotate(-180deg);
+                }
+            }
+        }
+    }
 
     .message {
         grid-template-areas:
