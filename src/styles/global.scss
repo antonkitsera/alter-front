@@ -9,7 +9,7 @@ textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0px 1000px $color-white-dark inset !important;
+  box-shadow: 0 0 0px 1000px $color-white-dark inset !important;
   -webkit-text-fill-color: $color-gray-dark-light;
 }
 
