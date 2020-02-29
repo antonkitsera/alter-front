@@ -170,6 +170,70 @@
     }
 }
 
+@media (max-width: 1140px) {
+    .services {
+        background-color: transparent;
+        padding-top: 20px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .Collapsible {
+        cursor: pointer;
+
+        &__trigger {
+            display: flex;
+            border-bottom: 1px solid rgba($color: $color-black, $alpha: 0.1);
+            padding-bottom: 5px;
+            font-family: $font-first;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 33px;
+            color: $color-blue;
+            position: relative;
+
+            &::after {
+                content: "";
+                display: block;
+                background-image: url("../assets/icon-accordion.svg");
+                background-repeat: no-repeat;
+                width: 12px;
+                height: 6px;         
+                position: absolute;
+                right: 5px;
+                top: 48%; 
+                transition: $transition;
+            }
+
+            &.is-closed {
+                &::after { 
+                    transform: rotate(-180deg);
+                }
+            }
+        }
+    }
+
+    .message {
+        padding-top: 20px;
+        padding-bottom: 36px;
+
+        &-aside {
+            &__logo {
+                max-width: 300px;
+            }
+
+            &__photo {
+                height: 386px;
+                margin-top: 29px;
+            }
+
+            &__source {
+                object-fit: cover;
+                height: 100%;
+            }
+        }
+    }
+}
 
 @media (max-width: 370px) {
     .message {
