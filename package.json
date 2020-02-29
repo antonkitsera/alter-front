@@ -16,7 +16,6 @@
     "gatsby-plugin-sharp": "^2.3.5",
     "gatsby-source-filesystem": "^2.1.40",
     "gatsby-source-strapi": "0.0.10",
-    "gatsby-transformer-inline-svg": "0.0.4",
     "gatsby-transformer-json": "^2.2.22",
     "gatsby-transformer-sharp": "^2.3.7",
     "gh-pages": "^2.1.1",
