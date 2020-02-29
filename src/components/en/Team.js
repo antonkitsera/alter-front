@@ -98,11 +98,11 @@ const Team = () => {
 
           <div className="team-controls">
             <button data-sal="slide-right" data-sal-duration="1000" data-sal-delay="450" data-sal-easing="ease" className="team-controls__item" onClick={() => handleSwipe("prev")}>
-              <img className="team-controls__icon" src={teamControlLeft} alt="Arrow Left" draggable="false"/>
+              <teamControlLeft className="team-controls__icon"/>
             </button>
 
             <button data-sal="slide-right" data-sal-duration="1000" data-sal-delay="450" data-sal-easing="ease" className="team-controls__item"  onClick={() => handleSwipe("next")}>
-              <img className="team-controls__icon" src={teamControlRight} alt="Arrow Right" draggable="false"/>
+              <teamControlRight className="team-controls__icon"/>
             </button>
           </div>
 

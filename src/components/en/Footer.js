@@ -50,7 +50,7 @@ const Footer = () => {
 
     <div className="container footer__wrapper">
       <div className="footer__copyright">
-        <img className="footer__logo" src={Logo} alt="Logo" />
+        <Logo className="footer__logo" />
         <p className="footer__text">© AlterServices 2020</p>
       </div>
 

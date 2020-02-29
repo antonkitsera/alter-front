@@ -74,7 +74,7 @@ const Header = () => {
     <nav className="container header__wrapper">
 
       { isMediaSmall ? <div className="m-header-logo">
-        <img className="m-header-logo__svg" src={Logo} alt="Alter" />
+        <Logo className="m-header-logo__svg" />
       </div> : ""}
 
       <ul className="header-list">

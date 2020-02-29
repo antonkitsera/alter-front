@@ -111,7 +111,7 @@ const ServicesPage = ({ data }) => {
         </div>
 
         <div className="message-aside">
-            <img  data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease"   className="message-aside__logo" src={Logo} alt="Alter" />
+            <Logo data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease"   className="message-aside__logo"/>
 
             <div data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease"   className="message-aside__photo">
                 <img src={Photo} className="message-aside__source" alt="Kyiv" />

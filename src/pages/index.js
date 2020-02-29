@@ -13,7 +13,6 @@ import Team from "../components/ua/Team"
 import Select from "../components/ua/select"
 import Map from "../components/ua/Map"
 
-import IconArrowRightBlue from "../assets/icon-arrow-right_blue.svg"
 import Logo from "../assets/logo-alter.svg"
 import partnerFirst from "../images/partner-1.png"
 import partnerSecond from "../images/partner-2.png"
@@ -139,7 +138,7 @@ const IndexPage = ({ data }) => {
           </video>
 
           <div className="banner__content container">
-            <img data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease" className="banner__logo" src={Logo} alt="Logo" />
+            <Logo data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease" className="banner__logo" />
   
             <h1 data-sal="slide-right" data-sal-duration="1000" data-sal-delay="350" data-sal-easing="ease" className="banner__title">There always is an alternative way that must be built on a competense and trust.</h1>
   

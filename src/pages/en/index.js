@@ -57,7 +57,8 @@ const IndexPage = ({ data }) => {
     <section id="banner" className="banner">
 
         <div className="banner__content container">
-          <img data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease" className="banner__logo" src={Logo} alt="Logo" />
+
+          <Logo data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease" className="banner__logo"/>
 
           <h1 data-sal="slide-right" data-sal-duration="1000" data-sal-delay="350" data-sal-easing="ease" className="banner__title">There always is an alternative way that must be built on a competense and trust.</h1>
 
