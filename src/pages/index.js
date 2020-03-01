@@ -199,8 +199,8 @@ const IndexPage = ({ data }) => {
         <div className="news__wrapper container">
           <h4 data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease" className="g-subtitle">NEWS</h4>
   
-          <div className="news-catalog sal-animate"  data-sal="slide-right" data-sal-duration="1000" data-sal-delay="450" data-sal-easing="ease">
-            {articles.map(({node}) => <div key={node.id} className="news-catalog__item">
+          <div className="news-catalog">
+            {articles.map(({node}) => <div key={node.id} className="news-catalog__item" data-sal="slide-right" data-sal-duration="1000" data-sal-delay="450" data-sal-easing="ease">
               <div className="news-catalog__image">
                 <img className="news-catalog__source" src={node.Image.publicURL} alt=""/>
               </div>
