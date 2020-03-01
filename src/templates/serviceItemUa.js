@@ -30,7 +30,7 @@ export default ({ data }) => {
             </section>
 
             <section className="service container">
-                <p data-sal="slide-right" data-sal-duration="1000" data-sal-delay="450" data-sal-easing="ease"  className="service__text">{service.text}</p>
+                <p className="service__text">{service.text}</p>
             </section>
         </Layout>
     )

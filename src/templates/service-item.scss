@@ -1,4 +1,16 @@
 @import "../styles/variables";
+   
+@keyframes opacityAnimation {
+    from {
+        opacity: 0;
+        transform: translateX(-50%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 
 .g {
     &-headline {
@@ -29,6 +41,9 @@
         line-height: 32px;
         color: $color-gray-dark;
         white-space: pre-wrap;
+        animation-name: opacityAnimation;
+        animation-duration: 2000ms;
+        animation-iteration-count: 1;
     }
 }
 
