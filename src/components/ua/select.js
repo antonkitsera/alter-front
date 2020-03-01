@@ -1,7 +1,5 @@
 import React, { useState, useRef, useEffect } from "react"
 
-import iconArrow from "../../assets/icon-arrow.svg"
-
 const Select = ({ siteTitle }) => {
 
     const options = ["Consultation One", "Consultation Two", "Consultation Three"];
@@ -37,7 +35,9 @@ const Select = ({ siteTitle }) => {
                 <span className="g-select-header__text">
                 {requestListHeader}
                 </span>
-                <img className="g-select-header__arrow" src={iconArrow} alt="Arrow Icon" />
+                <svg className="g-select-header__arrow" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.415 0.210083L6 4.79508L10.585 0.210083L12 1.62508L6 7.62508L0 1.62508L1.415 0.210083Z" fill="#4F4F4F"/>
+                </svg>
             </div>
     
             {requestList ? 

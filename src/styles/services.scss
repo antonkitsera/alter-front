@@ -195,12 +195,13 @@
             &::after {
                 content: "";
                 display: block;
+                background-image: url("../images/icon-arrow.png");
                 background-repeat: no-repeat;
                 width: 12px;
-                height: 6px;         
+                height: 8px;         
                 position: absolute;
                 right: 5px;
-                top: 48%; 
+                top: 46%; 
                 transition: $transition;
             }
 
