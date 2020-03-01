@@ -56,9 +56,9 @@ const ServicesPage = ({ data }) => {
     
     <section className="g-headline">
       <div className="container">
-        <h1 data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease" className="g-headline__title">SERVICES</h1>
+        <h1 data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease" className="g-headline__title">ПОСЛУГИ</h1>
         
-        <p data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease" className="g-headline__text">Every day we work for the confidence and success of our clients and partners</p>
+        <p data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease" className="g-headline__text">Кожен день ми працюємо задля впевненості та успіху наших клієнтів та партнерів</p>
       </div>
     </section>
 
