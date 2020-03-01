@@ -109,9 +109,9 @@ const BlogCategoryUa = ({ data }) => {
 
     <section className="blog-news">
         <div className="container">
-            <h3 className="blog-news__title">ОСТАННІ СТАТТІ</h3>
+            <h3 className="blog-news__title" data-sal="slide-right" data-sal-duration="1000" data-sal-delay="350" data-sal-easing="ease">ОСТАННІ СТАТТІ</h3>
 
-            <div className="blog-news__wrapper">
+            <div className="blog-news__wrapper" data-sal="slide-right" data-sal-duration="1000" data-sal-delay="400" data-sal-easing="ease">
                 {articles.map(({node}, index) => index < 3 ?
                     <div className="blog-news__item" key={node.id}>
                         <div className="blog-news__image">
@@ -134,7 +134,7 @@ const BlogCategoryUa = ({ data }) => {
 
     <section className="blog-main">
         <div className="blog-main__wrapper container">
-            <div className="blog-main__block">
+            <div className="blog-main__block" data-sal="slide-right" data-sal-duration="1000" data-sal-delay="500" data-sal-easing="ease">
                 <h5 className="blog-main__title">Категорії</h5>
 
                 <ul className="blog-main-list">
@@ -153,7 +153,7 @@ const BlogCategoryUa = ({ data }) => {
 
             <div className="blog-main__block">
                 {articles.map(({node}) => 
-                <div className="blog-main__item" key={node.id}>
+                <div className="blog-main__item" key={node.id}data-sal="slide-right" data-sal-duration="1000" data-sal-delay="450" data-sal-easing="ease">
                     <div className="blog-main__image">
                         <img className="blog-main__source" src={node.Image.publicURL} alt=""/>
                     </div>

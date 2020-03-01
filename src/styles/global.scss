@@ -695,6 +695,14 @@ body, .header__wrapper {
 }
 
 @media (max-width: 400px) {
+    .g-headline__title {
+        word-break: break-all;
+    }
+
+    .g-request__link {
+        padding: 22px 0 20px;
+    }
+
     .footer {
         &__wrapper {
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

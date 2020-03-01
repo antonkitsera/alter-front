@@ -1,4 +1,16 @@
 @import 'variables';
+  
+@keyframes opacityAnimation {
+    from {
+        opacity: 0;
+        transform: translateX(-50%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 
 .blog {
     &-news {
@@ -280,6 +292,9 @@
             letter-spacing: 0.03em;
             border-bottom: 1px solid $color-white-dark;
             color: $color-gray-dark;
+            animation-name: opacityAnimation;
+            animation-duration: 2000ms;
+            animation-iteration-count: 1;
         }
 
         &__text {
@@ -292,6 +307,9 @@
             font-size: 16px;
             line-height: 29px;
             color: $color-gray-dark-light;
+            animation-name: opacityAnimation;
+            animation-duration: 2200ms;
+            animation-iteration-count: 1;
         }
 
         &__date {
@@ -303,6 +321,9 @@
             line-height: 25px;
             letter-spacing: 0.03em;
             color: $color-gray;
+            animation-name: opacityAnimation;
+            animation-duration: 2400ms;
+            animation-iteration-count: 1;
         }
     }
 }
