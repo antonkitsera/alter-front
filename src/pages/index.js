@@ -7,7 +7,6 @@ import CountUp from 'react-countup'
 
 import "../styles/style.scss"
 
-import BannerCircle from "../components/bannerCircle"
 import Contacts from "../components/ua/Contacts"
 import Team from "../components/ua/Team"
 import Select from "../components/ua/select"
@@ -16,7 +15,6 @@ import Map from "../components/ua/Map"
 import Logo from "../assets/logo-alter.svg"
 import partnerFirst from "../images/partner-1.png"
 import partnerSecond from "../images/partner-2.png"
-import NewsImage from "../images/news-1.png"
 
 import CircleVideo from "../assets/circle.mp4"
 import CircleVideoSmall from "../assets/circle-sm.mp4"
@@ -133,9 +131,13 @@ const IndexPage = ({ data }) => {
   
       <section id="banner" className="banner">
   
-          <video className="banner__video" autoPlay loop muted>
-              <source src={isMediaSmall ? CircleVideoSmall : CircleVideo} type='video/mp4' />
-          </video>
+          {isMediaSmall ? <video className="banner__video" autoPlay loop muted playsInline>
+            <source src={CircleVideoSmall} type='video/mp4' />
+          </video> : null}
+
+          {isMediaSmall ? null : <video className="banner__video" autoPlay loop muted playsInline>
+              <source src={CircleVideo} type='video/mp4' />
+          </video>}
 
           <div className="banner__content container">
             <Logo data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300" data-sal-easing="ease" className="banner__logo" />
@@ -147,9 +149,6 @@ const IndexPage = ({ data }) => {
             <div data-sal="slide-right" data-sal-duration="1000" data-sal-delay="450" data-sal-easing="ease">
               <Link className="banner__link" to="">Request for consultation</Link>
             </div>
-  
-          
-            {/*<BannerCircle />*/}
           </div>
       </section>
   

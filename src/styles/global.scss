@@ -495,7 +495,7 @@ body, .header__wrapper {
             padding: 0;
             flex-direction: column;
             background-color: $color-blue;
-            padding-top: 100px;
+            padding-top: 20px;
             padding-left: 16px;
             padding-right: 16px;
             padding-bottom: 45px;
@@ -507,7 +507,7 @@ body, .header__wrapper {
             transition: $transition;
             overflow-y: scroll;
             -webkit-overflow-scrolling: touch;
-            height: calc(100% - 145px);
+            height: calc(100% - 60px);
         }
 
         &-list {
@@ -675,10 +675,6 @@ body, .header__wrapper {
             margin-bottom: 32px;
             width: 264px;
             height: 57px;
-
-            &__svg {
-                width: 100%;
-            }
         }
     }
 

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Link, graphql } from "gatsby"
 
 import Layout from "../../components/en/layout"
@@ -7,7 +7,6 @@ import CountUp from 'react-countup'
 
 import "../../styles/style.scss"
 
-import BannerCircle from "../../components/bannerCircle"
 import Contacts from "../../components/en/Contacts"
 import Team from "../../components/en/Team"
 import Select from "../../components/en/select"
@@ -16,6 +15,9 @@ import Map from "../../components/en/Map"
 import Logo from "../../assets/logo-alter.svg"
 import partnerFirst from "../../images/partner-1.png"
 import partnerSecond from "../../images/partner-2.png"
+
+import CircleVideo from "../../assets/circle.mp4"
+import CircleVideoSmall from "../../assets/circle-sm.mp4"
 
 export const query = graphql`
   query CasesShowQueryEn {
@@ -50,11 +52,38 @@ const IndexPage = ({ data }) => {
   const casesData = data.allCasesDataJson.edges;
   const articles = data.allStrapiEnArticles.edges;
 
+  const useMediaQuery = (query) => {
+    let mediaMatch = undefined;
+    const [matches, setMatches] = useState(false);
+  
+    useEffect(() => {  
+      if (typeof window !== `undefined`) {
+        mediaMatch = window.matchMedia(query);
+        setMatches(mediaMatch.matches)
+      }
+
+      const handler = e => setMatches(e.matches);
+      mediaMatch.addListener(handler);
+      return () => mediaMatch.removeListener(handler);
+    });
+    return matches;
+  };
+
+  const isMediaSmall = useMediaQuery('(max-width: 1140px)');
+
   return(
   <Layout>
     <SEO title="Main" />
 
     <section id="banner" className="banner">
+
+          {isMediaSmall ? <video className="banner__video" autoPlay loop muted playsInline>
+            <source src={CircleVideoSmall} type='video/mp4' />
+          </video> : null}
+
+          {isMediaSmall ? null : <video className="banner__video" autoPlay loop muted playsInline>
+              <source src={CircleVideo} type='video/mp4' />
+          </video>}
 
         <div className="banner__content container">
 
@@ -67,8 +96,6 @@ const IndexPage = ({ data }) => {
           <div data-sal="slide-right" data-sal-duration="1000" data-sal-delay="450" data-sal-easing="ease">
             <Link className="banner__link" to="">Request for consultation</Link>
           </div>
-
-          <BannerCircle />
         </div>
     </section>
 

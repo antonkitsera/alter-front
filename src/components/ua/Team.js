@@ -3,9 +3,6 @@ import { useSwipeable } from "react-swipeable";
 
 import { graphql, useStaticQuery } from "gatsby"
 
-import teamControlLeft from "../../assets/team-control-left.svg";
-import teamControlRight from "../../assets/team-control-right.svg";
-
 const Team = () => {
   const query = useStaticQuery(graphql`
   query TeamDataQuery {
@@ -97,12 +94,20 @@ const Team = () => {
           </div>
 
           <div className="team-controls">
-            <button data-sal="slide-right" data-sal-duration="1000" data-sal-delay="450" data-sal-easing="ease" className="team-controls__item" onClick={() => handleSwipe("prev")}>
-              <img className="team-controls__icon" src={teamControlLeft} alt="Arrow Left" draggable="false"/>
+          <button data-sal="slide-right" data-sal-duration="1000" data-sal-delay="450" data-sal-easing="ease" className="team-controls__item" onClick={() => handleSwipe("prev")}>
+              <svg className="team-controls__icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 8L4 16L12 24" stroke="#333333" stroke-width="2" stroke-linecap="square"/>
+                <path d="M28 16L5.33334 16" stroke="#333333" stroke-width="2" stroke-linecap="square"/>
+                <path d="M4.00016 16L5.3335 16" stroke="#333333" stroke-width="2" stroke-linecap="round"/>
+              </svg>
             </button>
 
             <button data-sal="slide-right" data-sal-duration="1000" data-sal-delay="450" data-sal-easing="ease" className="team-controls__item"  onClick={() => handleSwipe("next")}>
-              <img className="team-controls__icon" src={teamControlRight} alt="Arrow Right" draggable="false"/>
+            <svg className="team-controls__icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 24L28 16L20 8" stroke="#333333" stroke-width="2" stroke-linecap="square"/>
+              <path d="M4 16L26.6667 16" stroke="#333333" stroke-width="2" stroke-linecap="square"/>
+              <path d="M27.9998 16L26.6665 16" stroke="#333333" stroke-width="2" stroke-linecap="round"/>
+            </svg>
             </button>
           </div>
 
