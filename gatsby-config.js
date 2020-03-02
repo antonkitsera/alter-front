@@ -34,7 +34,7 @@ module.exports = {
     {
       resolve: "gatsby-source-strapi",
       options: {
-        apiURL: process.env.REACT_APP_API_URL,
+        apiURL: "http://64.225.76.175:1337",
         contentTypes: [
           "ua-articles",
           "ua-categories",
